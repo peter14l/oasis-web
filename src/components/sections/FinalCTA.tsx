@@ -6,6 +6,34 @@ import { Loader2, Check, AlertCircle } from "lucide-react";
 import AuthModal from "./AuthModal";
 import { joinBetaTester, joinWaitlist, getBetaTesterCount, getMaxBetaTesters } from "@/app/actions/beta";
 
+// Detect device architecture for APK download
+function getDeviceArchitecture(): "arm64-v8a" | "armeabi-v7a" {
+  if (typeof navigator === 'undefined') return "arm64-v8a";
+  
+  const userAgent = navigator.userAgent.toLowerCase();
+  
+  // Check for 64-bit ARM (most modern Android devices)
+  if (userAgent.includes("arm64") || userAgent.includes("aarch64") || userAgent.includes("x86_64")) {
+    return "arm64-v8a";
+  }
+  
+  // Default to 32-bit ARM
+  return "armeabi-v7a";
+}
+
+function handleDownloadAPK() {
+  const arch = getDeviceArchitecture();
+  const downloadPath = `/downloads/${arch}/oasis-${arch}.apk`;
+  
+  // Create a temporary link and trigger download
+  const link = document.createElement('a');
+  link.href = downloadPath;
+  link.download = `oasis-${arch}.apk`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
 export default function FinalCTA() {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -235,7 +263,7 @@ export default function FinalCTA() {
             <span>macOS</span>
             <span className="px-2 py-0.5 bg-oasis-mist/10 text-oasis-mist/40 text-xs font-space-mono rounded">Coming Soon</span>
           </button>
-          <button className="flex items-center gap-3 px-6 py-3 bg-oasis-moss/40 border border-oasis-sage/30 rounded-full font-geist text-oasis-mist hover:border-oasis-glow/30 transition-all cursor-default">
+          <button onClick={handleDownloadAPK} className="flex items-center gap-3 px-6 py-3 bg-oasis-moss/40 border border-oasis-sage/30 rounded-full font-geist text-oasis-mist hover:border-oasis-glow/30 transition-all cursor-default">
             <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
               <path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/>
             </svg>
