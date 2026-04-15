@@ -298,6 +298,11 @@ export default function FinalCTA() {
               <span className="px-2 py-0.5 bg-oasis-mist/10 text-oasis-mist/40 text-xs font-space-mono rounded">Coming Soon</span>
             </button>
           )}
+          {!isApkUnlocked && (
+            <p className="font-space-mono text-xs text-oasis-mist/50 mt-2">
+              APK will unlock at 11:11 AM IST on April 19
+            </p>
+          )}
         </motion.div>
       </motion.div>
 

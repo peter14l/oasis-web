@@ -3,11 +3,13 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+/* 
 const quotes = [
   "Finally, a place where I don't feel like I'm being harvested for my attention.",
   "Oasis feels like the internet used to — personal, safe, and actually social.",
   "The session limits changed my relationship with my phone. I'm present again.",
 ];
+*/
 
 export default function SocialProof() {
   return (
@@ -48,7 +50,7 @@ export default function SocialProof() {
         </motion.div>
         */}
 
-        {/* Testimonials */}
+        {/* Testimonials 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {quotes.map((quote, i) => (
             <motion.div
@@ -66,6 +68,7 @@ export default function SocialProof() {
             </motion.div>
           ))}
         </div>
+        */}
       </div>
     </section>
   );
