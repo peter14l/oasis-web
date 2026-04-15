@@ -263,12 +263,11 @@ export default function FinalCTA() {
             <span>macOS</span>
             <span className="px-2 py-0.5 bg-oasis-mist/10 text-oasis-mist/40 text-xs font-space-mono rounded">Coming Soon</span>
           </button>
-          <button onClick={handleDownloadAPK} className="flex items-center gap-3 px-6 py-3 bg-oasis-moss/40 border border-oasis-sage/30 rounded-full font-geist text-oasis-mist hover:border-oasis-glow/30 transition-all cursor-default">
+          <button onClick={handleDownloadAPK} className="flex items-center gap-3 px-6 py-3 bg-oasis-moss/40 border border-oasis-sage/30 rounded-full font-geist text-oasis-mist hover:border-oasis-glow/30 transition-all cursor-pointer">
             <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
               <path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/>
             </svg>
             <span>Download APK</span>
-            <span className="px-2 py-0.5 bg-oasis-glow/20 text-oasis-glow text-xs font-space-mono rounded">Coming Soon</span>
           </button>
         </motion.div>
       </motion.div>
