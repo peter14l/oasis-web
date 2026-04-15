@@ -22,7 +22,7 @@ export default function SocialProof() {
           Built for humans who want more.
         </motion.h2>
 
-        {/* Avatar Cluster */}
+        {/* Avatar Cluster 
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -46,6 +46,7 @@ export default function SocialProof() {
             Join 12,000+ humans on the waitlist
           </span>
         </motion.div>
+        */}
 
         {/* Testimonials */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">

@@ -6,6 +6,9 @@ import { Loader2, Check, AlertCircle } from "lucide-react";
 import AuthModal from "./AuthModal";
 import { joinBetaTester, joinWaitlist, getBetaTesterCount, getMaxBetaTesters } from "@/app/actions/beta";
 
+// APK Launch date: April 19, 2026 at 11:11 AM IST
+const APK_LAUNCH_DATE = new Date("2026-04-19T11:11:00+05:30").getTime();
+
 // Detect device architecture for APK download
 function getDeviceArchitecture(): "arm64-v8a" | "armeabi-v7a" {
   if (typeof navigator === 'undefined') return "arm64-v8a";
@@ -43,6 +46,7 @@ export default function FinalCTA() {
   const [isBetaFull, setIsBetaFull] = useState(false);
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [maxBeta, setMaxBeta] = useState(15);
+  const [isApkUnlocked, setIsApkUnlocked] = useState(false);
 
   useEffect(() => {
     // Get initial beta count
@@ -56,6 +60,21 @@ export default function FinalCTA() {
       setIsBetaFull(count >= max);
     }
     fetchBetaCount();
+
+    // Check APK unlock status
+    const now = Date.now();
+    setIsApkUnlocked(now >= APK_LAUNCH_DATE);
+
+    // Poll every second to unlock APK at exact time
+    const interval = setInterval(() => {
+      const now = Date.now();
+      if (now >= APK_LAUNCH_DATE) {
+        setIsApkUnlocked(true);
+        clearInterval(interval);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
   }, []);
 
   const handleJoinBeta = async (userEmail: string) => {
@@ -263,12 +282,22 @@ export default function FinalCTA() {
             <span>macOS</span>
             <span className="px-2 py-0.5 bg-oasis-mist/10 text-oasis-mist/40 text-xs font-space-mono rounded">Coming Soon</span>
           </button>
-          <button onClick={handleDownloadAPK} className="flex items-center gap-3 px-6 py-3 bg-oasis-moss/40 border border-oasis-sage/30 rounded-full font-geist text-oasis-mist hover:border-oasis-glow/30 transition-all cursor-pointer">
-            <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
-              <path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/>
-            </svg>
-            <span>Download APK</span>
-          </button>
+          {isApkUnlocked ? (
+            <button onClick={handleDownloadAPK} className="flex items-center gap-3 px-6 py-3 bg-oasis-moss/40 border border-oasis-sage/30 rounded-full font-geist text-oasis-mist hover:border-oasis-glow/30 transition-all cursor-pointer">
+              <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
+                <path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/>
+              </svg>
+              <span>Download APK</span>
+            </button>
+          ) : (
+            <button disabled className="flex items-center gap-3 px-6 py-3 bg-oasis-moss/20 border border-oasis-sage/10 rounded-full font-geist text-oasis-mist/30 cursor-not-allowed opacity-50">
+              <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
+                <path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/>
+              </svg>
+              <span>Download APK</span>
+              <span className="px-2 py-0.5 bg-oasis-mist/10 text-oasis-mist/40 text-xs font-space-mono rounded">Coming Soon</span>
+            </button>
+          )}
         </motion.div>
       </motion.div>
 
