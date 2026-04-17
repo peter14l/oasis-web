@@ -6,8 +6,8 @@ import { Loader2, Check, AlertCircle } from "lucide-react";
 import AuthModal from "./AuthModal";
 import { joinBetaTester, joinWaitlist, getBetaTesterCount, getMaxBetaTesters } from "@/app/actions/beta";
 
-// Downloads Launch date: April 19, 2026 at 11:11 AM IST
-const DOWNLOADS_LAUNCH_DATE = new Date("2026-04-19T11:11:00+05:30").getTime();
+// Downloads Launch date: April 30, 2026 at 11:11 AM IST
+const DOWNLOADS_LAUNCH_DATE = new Date("2026-04-30T11:11:00+05:30").getTime();
 
 // Detect device architecture for APK download
 function getDeviceArchitecture(): "arm64-v8a" | "armeabi-v7a" {
@@ -232,7 +232,7 @@ export default function FinalCTA() {
               You're In!
             </h3>
             <p className="font-geist text-oasis-mist">
-              Welcome to the beta. Check your email for next steps.
+              Welcome to the beta. Check your email (and spam folder) for next steps.
             </p>
           </motion.div>
         )}
@@ -326,7 +326,7 @@ export default function FinalCTA() {
           )}
           {!isDownloadsUnlocked && (
             <p className="font-space-mono text-xs text-oasis-mist/50 mt-2">
-              Downloads will unlock at 11:11 AM IST on April 19
+              Downloads will unlock at 11:11 AM IST on April 30
             </p>
           )}
         </motion.div>
