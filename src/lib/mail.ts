@@ -48,7 +48,7 @@ export async function sendLaunchEmail(userEmail: string) {
           <p>Hi there,</p>
           <p>The moment has arrived. Oasis is now officially live!</p>
           <p>You can now download the APK and start your journey to a more mindful social experience.</p>
-          <p><a href="https://oasis-landing.vercel.app/" style="background-color: #7FFFAD; color: #1E292B; padding: 12px 24px; text-decoration: none; border-radius: 24px; font-weight: bold; display: inline-block;">Download APK</a></p>
+          <p><a href="https://oasisweb-omega.vercel.app/" style="background-color: #7FFFAD; color: #1E292B; padding: 12px 24px; text-decoration: none; border-radius: 24px; font-weight: bold; display: inline-block;">Download APK</a></p>
           <p>If you have any feedback or questions, please don't hesitate to reach out to us at oasis.officialsupport@gmail.com.</p>
           <p>Stay present,<br>The Oasis Team</p>
         </div>
