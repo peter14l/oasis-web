@@ -1,0 +1,23 @@
+{
+  "android": {
+    "version": "4.3.2",
+    "url": "https://pub-eb8774786d7e48b8982367d35368a478.r2.dev/oasis-arm64-v8a-release.apk",
+    "notes": "Performance improvements and R2 migration.",
+    "required": false,
+    "date": "2026-04-30T12:00:00Z"
+  },
+  "windows": {
+    "version": "4.3.2",
+    "url": "https://pub-eb8774786d7e48b8982367d35368a478.r2.dev/oasis-windows.msix",
+    "notes": "Performance improvements and R2 migration.",
+    "required": false,
+    "date": "2026-04-30T12:00:00Z"
+  },
+  "macos": {
+    "version": "4.3.2",
+    "url": "https://pub-eb8774786d7e48b8982367d35368a478.r2.dev/oasis-macos.dmg",
+    "notes": "Performance improvements and R2 migration.",
+    "required": false,
+    "date": "2026-04-30T12:00:00Z"
+  }
+}
