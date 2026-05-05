@@ -59,7 +59,7 @@ export default function Pricing() {
               transition={{ delay: i * 0.2 }}
               className={`p-10 rounded-[3rem] glass flex flex-col justify-between transition-all duration-500 hover:scale-102 ${
                 plan.highlight 
-                  ? "border-oasis-glow/40 shadow-[0_0_80px_rgba(127,255,212,0.1)] scale-105 z-10" 
+                  ? "border-oasis-glow/40 shadow-[0_0_80px_rgba(93,201,168,0.15)] scale-105 z-10" 
                   : "border-oasis-sage/20 opacity-90"
               }`}
             >
@@ -90,7 +90,7 @@ export default function Pricing() {
               <button
                 className={`w-full py-4 rounded-full font-space-mono transition-all duration-300 ${
                   plan.highlight
-                    ? "bg-oasis-glow text-oasis-deep hover:shadow-[0_0_30px_rgba(127,255,212,0.3)]"
+                    ? "bg-oasis-glow text-oasis-deep hover:shadow-[0_0_30px_rgba(93,201,168,0.3)]"
                     : "border border-oasis-mist/30 text-oasis-white hover:bg-white/5"
                 }`}
               >

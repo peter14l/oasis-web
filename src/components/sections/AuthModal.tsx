@@ -28,6 +28,20 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
 
     try {
       if (mode === "signup") {
+        // Check if already in beta_testers or waitlist to avoid redundant signups
+        const { data: existingBeta } = await supabase
+          .from('beta_testers')
+          .select('email')
+          .eq('email', email)
+          .single();
+
+        if (existingBeta) {
+          setError("An account already exists with this email. Please sign in instead.");
+          setMode("signin");
+          setLoading(false);
+          return;
+        }
+
         const { error } = await supabase.auth.signUp({
           email,
           password,
@@ -37,7 +51,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
         });
 
         if (error) throw error;
-        setSuccess("Account created successfully! You can now sign in.");
+        setSuccess("Account created successfully! Please check your spam folder for the verification email. You can now sign in.");
         setMode("signin");
       } else {
         const { error } = await supabase.auth.signInWithPassword({

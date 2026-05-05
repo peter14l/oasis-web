@@ -91,11 +91,6 @@ export default function FoundersNote() {
                 </p>
               </div>
             </div>
-
-            <p className="pt-8 font-cormorant text-2xl italic text-oasis-sand text-right">
-              Use it. Don&apos;t use it.<br />
-              <span className="text-oasis-glow">It&apos;s up to you.</span>
-            </p>
           </div>
         </motion.div>
       </div>
