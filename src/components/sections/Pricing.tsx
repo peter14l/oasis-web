@@ -24,7 +24,7 @@ const PPP_PRICES: Record<string, { price: string; symbol: string }> = {
 
 export default function Pricing() {
   const [geoData, setGeoData] = useState<{ country: string; isVpn: boolean } | null>(null);
-  const [pricing, setPricing] = useState(PPP_PRICES.DEFAULT);
+  const [pricing, setPricing] = useState<{ price: string; symbol: string } | null>(null);
 
   useEffect(() => {
     async function fetchGeo() {
@@ -42,15 +42,19 @@ export default function Pricing() {
         }
       } catch (error) {
         console.error("Failed to fetch geo data", error);
+        setPricing(PPP_PRICES.DEFAULT);
       }
     }
     fetchGeo();
   }, []);
 
+  // Use India as fallback for immediate display if you prefer, or a placeholder
+  const activePricing = pricing || PPP_PRICES.DEFAULT;
+
   const plans = [
     {
       name: "Free",
-      price: geoData?.isVpn ? `${PPP_PRICES.DEFAULT.symbol}0` : `${pricing.symbol}0`,
+      price: `${activePricing.symbol}0`,
       features: [
         "Basic Time Capsules",
         "Public Circles",
@@ -62,7 +66,7 @@ export default function Pricing() {
     },
     {
       name: "Pro",
-      price: geoData?.isVpn ? `${PPP_PRICES.DEFAULT.symbol}${PPP_PRICES.DEFAULT.price}` : `${pricing.symbol}${pricing.price}`,
+      price: `${activePricing.symbol}${activePricing.price}`,
       features: [
         "Extended Time Capsules",
         "Private & Hidden Circles",
