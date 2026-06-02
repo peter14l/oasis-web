@@ -3,11 +3,13 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Shield, MessageCircle, AlertTriangle, Coffee } from "lucide-react";
+import { BuilderCore } from "../3d/DecorativeObjects";
 
 export default function FoundersNote() {
   return (
     <section id="mission" className="py-24 px-6 bg-oasis-deep relative overflow-hidden">
-      <div className="max-w-4xl mx-auto">
+      <BuilderCore />
+      <div className="max-w-4xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
